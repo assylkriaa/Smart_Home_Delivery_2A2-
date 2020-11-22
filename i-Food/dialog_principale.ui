@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_principale</class>
+ <widget class="QDialog" name="Dialog_principale">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>646</width>
+    <height>475</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Emplacement&amp;reclamation </string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background:rgb(170, 32, 255)
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="Emplacement">
+      <attribute name="title">
+       <string>Gestion d'emplacement</string>
+      </attribute>
+      <widget class="QPushButton" name="pushButton_ajouter_empl">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>360</y>
+         <width>191</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Ajouter emplacement</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_supp_empl">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>360</y>
+         <width>181</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Supprimer emplacement </string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="tableView_emplacement">
+       <property name="geometry">
+        <rect>
+         <x>325</x>
+         <y>30</y>
+         <width>281</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>390</y>
+         <width>601</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButton_trier_empl">
+          <property name="styleSheet">
+           <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+          </property>
+          <property name="text">
+           <string>Trier emplacement </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_enregistrer_empl">
+          <property name="styleSheet">
+           <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+          </property>
+          <property name="text">
+           <string>Enregistrer liste d'emplacement</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_imprimer_empl">
+          <property name="styleSheet">
+           <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+          </property>
+          <property name="text">
+           <string>Imprimer</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>241</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Nom de secteur :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_nom_secteur">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>ville de secteur :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_2_ville_secteur">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>code postal :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_3_code_postal">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>date jj/mm/aa :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_4_date_emplacement">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="pushButton_modifier_empl">
+       <property name="geometry">
+        <rect>
+         <x>420</x>
+         <y>360</y>
+         <width>191</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Modifier emplacement</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>300</y>
+         <width>261</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>175</x>
+         <y>295</y>
+         <width>201</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="Reclamation">
+      <attribute name="title">
+       <string>Gestion de réclamation</string>
+      </attribute>
+      <widget class="QTableView" name="tableView_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>30</y>
+         <width>281</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_ajouter_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>161</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Ajouter réclamation</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_supp_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>360</y>
+         <width>231</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Supprimer réclamation</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_modifier_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>360</y>
+         <width>151</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Modifier réclamation</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_imprimer_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>390</y>
+         <width>151</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Imprimer</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_trier_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>390</y>
+         <width>161</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>Trier réclamation</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_enregistrer_reclamation">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>390</y>
+         <width>231</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background:rgb(cf,cf,cf);
+color:black;
+</string>
+       </property>
+       <property name="text">
+        <string>enregistrer liste de réclamation </string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>251</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Code de réclamation :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_code_reclamation">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Sujet de réclamation :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_sujet_reclamation">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Commentaire de réclamation :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_commentaire_reclamation">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Date jj/mm/aa :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_date_reclamation">
+          <property name="styleSheet">
+           <string notr="true">background:rgb(255, 255, 255)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>300</y>
+         <width>191</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>145</x>
+         <y>305</y>
+         <width>181</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
