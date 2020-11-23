@@ -36,6 +36,10 @@ private slots:
 
     void on_pushButton_trierco_clicked();
 
+    void on_pushButton_enregistrerco_clicked();
+
+    void on_pushButton_enregistrerct_clicked();
+
 private:
     Ui::MainWindow *ui;
     Commande tempCommande;

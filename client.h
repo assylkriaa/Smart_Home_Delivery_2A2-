@@ -20,7 +20,7 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier();
-    QSqlQueryModel * rechercher(QString&,QString&);
+    QSqlQueryModel * rechercher(QString&,QString&,QString&);
 
 };
 

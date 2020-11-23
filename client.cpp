@@ -60,23 +60,29 @@ bool Client::modifier()
 
 
 }
-QSqlQueryModel * Client::rechercher(QString& choice,QString& a)
+QSqlQueryModel * Client::rechercher(QString& choice,QString& a,QString& b)
 {
     QSqlQuery query;
 
     QSqlQueryModel * model=new QSqlQueryModel();
 
-    if (choice=="ID")
-    model->setQuery("SELECT * FROM Clients where ID like '"+a+"%'");
 
-    else if (choice=="nom")
-     model->setQuery("SELECT * FROM Clients where nom like '"+a+"%'");
+    if (choice=="ID et nom")
+    model->setQuery("SELECT * FROM Clients where (ID LIKE '"+a+"%')  AND (nom LIKE '"+b+"%')");
 
-    else if (choice=="prenom")
-        model->setQuery("SELECT * FROM Clients where prenom like '"+a+"%'");
+    if (choice=="ID et prenom")
+    model->setQuery("SELECT * FROM Clients where (ID LIKE '"+a+"%')  AND (prenom LIKE '"+b+"%')");
+    if (choice=="ID et adresse")
+    model->setQuery("SELECT * FROM Clients where (ID LIKE '"+a+"%')  AND (adresse LIKE '"+b+"%')");
 
-   else if (choice=="adresse")
-        model->setQuery("SELECT * FROM Clients where adresse like '"+a+"%'");
+    else if (choice=="nom et prenom")
+     model->setQuery("SELECT * FROM Clients where (nom LIKE '"+a+"%')  AND (prenom LIKE '"+b+"%')");
+
+    else if (choice=="nom et adresse")
+        model->setQuery("SELECT * FROM Clients where (nom LIKE '"+a+"%')  AND (adresse LIKE '"+b+"%')");
+
+   else if (choice=="prenom et adresse")
+        model->setQuery("SELECT * FROM Clients where (prenom LIKE '"+a+"%')  AND (adresse LIKE '"+b+"%')");
 
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));

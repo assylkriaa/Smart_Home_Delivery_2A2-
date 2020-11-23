@@ -31,7 +31,7 @@
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -221,7 +221,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>370</y>
+        <y>400</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -230,10 +230,20 @@
      <widget class="QLineEdit" name="lineEdit_recherche">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>410</y>
+        <x>150</x>
+        <y>380</y>
         <width>121</width>
         <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_reee">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>420</y>
+        <width>121</width>
+        <height>20</height>
        </rect>
       </property>
      </widget>
@@ -399,7 +409,7 @@
        <string>enregistrer commande</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="comboBox_commande">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -409,7 +419,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="comboBox_choix">
       <property name="geometry">
        <rect>
         <x>140</x>
