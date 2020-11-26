@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include  "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "commande.h"
 #include <QMessageBox>
@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QTextStream>
 #include <QTextDocument>
+#include <QDateTime>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -36,12 +37,15 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_ajouterco_clicked()
 {
 
+
+
     int nb=ui->spinBox->text().toInt();
     int id=ui->lineEdit_IDCOMMANDES->text().toInt();
     QString nom_commande=ui->lineEdit_commande->text();
 
     Commande c(nom_commande,nb,id);
     bool test=c.ajouter();
+
     if(test)
     {
         /*ui->tableView->setModel(tempCommande.afficher());*/
@@ -59,6 +63,13 @@ void MainWindow::on_pushButton_ajouterco_clicked()
 
 void MainWindow::on_pushButton_afficherco_clicked()
 {
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT ID FROM Commandes ");
+     qry.exec();
+     Modal->setQuery(qry);
+     ui->comboBox_modifiercoma->setModel(Modal);
     ui->tableView->setModel(tempCommande.afficher());
 }
 
@@ -82,6 +93,8 @@ void MainWindow::on_pushButton_suprimerco_clicked()
 
 void MainWindow::on_pushButton_ajouterct_clicked()
 {
+
+
     int ID=ui->lineEdit_ID->text().toInt();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
@@ -105,6 +118,13 @@ void MainWindow::on_pushButton_ajouterct_clicked()
 
 void MainWindow::on_pushButton_afficherct_clicked()
 {
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT ID FROM Clients ");
+     qry.exec();
+     Modal->setQuery(qry);
+     ui->comboBox_modifiercli->setModel(Modal);
     ui->tableView_client->setModel(tempClient.afficher());
 
 }
@@ -215,6 +235,8 @@ void MainWindow::on_pushButton_enregistrerco_clicked()
                    const int rowCount = tableView.model()->rowCount();
                    const int columnCount =  tableView.model()->columnCount();
 
+                   QString date = QDateTime::currentDateTime().toString();
+out<<date;
 
                    const QString strTitle ="Document";
 
@@ -222,6 +244,7 @@ void MainWindow::on_pushButton_enregistrerco_clicked()
                    out <<  "<html>\n"
                        "<head>\n"
                            "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+
                        <<  QString("<title>%1</title>\n").arg(strTitle)
                        <<  "</head>\n"
                        "<body bgcolor=#ffffff link=#5000A0>\n"
@@ -314,6 +337,8 @@ void MainWindow::on_pushButton_enregistrerct_clicked()
                    const int columnCount =  tableView.model()->columnCount();
 
 
+                   QString date = QDateTime::currentDateTime().toString();
+out<<date;
                    const QString strTitle ="Document";
 
 
@@ -386,4 +411,41 @@ void MainWindow::on_pushButton_enregistrerct_clicked()
 
 
                    delete document;
+}
+
+void MainWindow::on_comboBox_modifiercom_currentIndexChanged(const QString &arg1)
+{
+    QString name =ui->comboBox_modifiercli->currentText();
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Clients where ID LIKE '"+name+"%' ");
+     if(qry.exec())
+     {
+         while(qry.next())
+         {
+             ui->lineEdit_ID->setText(qry.value(0).toString());
+         ui->lineEdit_nom->setText(qry.value(1).toString());
+         ui->lineEdit_prenom->setText(qry.value(2).toString());
+         ui->lineEdit_adresse->setText(qry.value(3).toString());
+}
+
+     }
+
+}
+
+void MainWindow::on_comboBox_modifiercoma_currentIndexChanged(const QString &arg1)
+{
+    QString name =ui->comboBox_modifiercoma->currentText();
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Commandes where ID LIKE '"+name+"%' ");
+     if(qry.exec())
+     {
+         while(qry.next())
+         {
+             ui->lineEdit_IDCOMMANDES->setText(qry.value(0).toString());
+         ui->lineEdit_commande->setText(qry.value(1).toString());
+         ui->spinBox->setValue(qry.value(2).toInt());
+
+}
+
+     }
 }

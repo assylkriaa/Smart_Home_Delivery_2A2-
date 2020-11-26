@@ -40,6 +40,10 @@ private slots:
 
     void on_pushButton_enregistrerct_clicked();
 
+    void on_comboBox_modifiercom_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_modifiercoma_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Commande tempCommande;

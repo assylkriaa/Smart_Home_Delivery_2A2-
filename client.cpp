@@ -24,6 +24,8 @@ bool Client::ajouter()
     query.bindValue(":prenom",prenom);
     query.bindValue(":adresse",adresse);
     query.bindValue(":ID",IDS);
+
+
     return query.exec();
 }
 QSqlQueryModel * Client::afficher()
