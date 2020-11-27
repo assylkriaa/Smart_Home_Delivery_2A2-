@@ -80,3 +80,14 @@ QSqlQueryModel * Commande::trier(QString& choice,QString& a)
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("nbc"));
     return model;
 }
+QSqlQueryModel * Commande::enregistrer()
+{
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Commandes ");
+     qry.exec();
+     Modal->setQuery(qry);
+     return Modal;
+
+}

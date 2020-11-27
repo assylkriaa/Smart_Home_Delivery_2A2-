@@ -21,6 +21,8 @@ public:
     bool supprimer(int);
     bool modifier();
     QSqlQueryModel * rechercher(QString&,QString&,QString&);
+    QSqlQueryModel * enregistrer();
+
 
 };
 

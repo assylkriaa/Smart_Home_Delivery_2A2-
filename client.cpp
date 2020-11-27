@@ -94,3 +94,14 @@ QSqlQueryModel * Client::rechercher(QString& choice,QString& a,QString& b)
 
     return model;
 }
+QSqlQueryModel * Client::enregistrer()
+{
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Clients");
+     qry.exec();
+     Modal->setQuery(qry);
+     return Modal;
+}
+

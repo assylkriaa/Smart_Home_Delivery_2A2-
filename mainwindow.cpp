@@ -216,16 +216,8 @@ void MainWindow::on_pushButton_enregistrerco_clicked()
 
     QSqlDatabase db;
                   QTableView tableView;
-                  QSqlQueryModel * Modal=new  QSqlQueryModel();
 
-                  QSqlQuery qry;
-                   qry.prepare("SELECT * FROM Commandes ");
-                   qry.exec();
-                   Modal->setQuery(qry);
-                   tableView.setModel(Modal);
-
-
-
+                   tableView.setModel(tempCommande.enregistrer());
                    db.close();
 
 
@@ -317,13 +309,8 @@ void MainWindow::on_pushButton_enregistrerct_clicked()
 {
     QSqlDatabase db;
                   QTableView tableView;
-                  QSqlQueryModel * Modal=new  QSqlQueryModel();
 
-                  QSqlQuery qry;
-                   qry.prepare("SELECT * FROM Clients");
-                   qry.exec();
-                   Modal->setQuery(qry);
-                   tableView.setModel(Modal);
+                   tableView.setModel(tempClient.enregistrer());
 
 
 

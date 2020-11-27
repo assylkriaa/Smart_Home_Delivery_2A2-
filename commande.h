@@ -20,6 +20,7 @@ public:
     bool supprimer(int);
     bool modifier();
         QSqlQueryModel * trier(QString&,QString&);
+        QSqlQueryModel * enregistrer();
 
 };
 
