@@ -3,6 +3,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlDatabase>
+//test tutoriel git
 class connection
 {
 public:
