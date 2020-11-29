@@ -289,7 +289,6 @@ out<<date;
                        lab.setPixmap(pixmap);
                        QPainter painter(&lab);
                        QPrinter printer(QPrinter::PrinterResolution);
-
   */
                        document->print(&printer);
 
@@ -384,7 +383,6 @@ out<<date;
                        lab.setPixmap(pixmap);
                        QPainter painter(&lab);
                        QPrinter printer(QPrinter::PrinterResolution);
-
   */
                        document->print(&printer);
 
@@ -398,25 +396,6 @@ out<<date;
 
 
                    delete document;
-}
-
-void MainWindow::on_comboBox_modifiercom_currentIndexChanged(const QString &arg1)
-{
-    QString name =ui->comboBox_modifiercli->currentText();
-    QSqlQuery qry;
-     qry.prepare("SELECT * FROM Clients where ID LIKE '"+name+"%' ");
-     if(qry.exec())
-     {
-         while(qry.next())
-         {
-             ui->lineEdit_ID->setText(qry.value(0).toString());
-         ui->lineEdit_nom->setText(qry.value(1).toString());
-         ui->lineEdit_prenom->setText(qry.value(2).toString());
-         ui->lineEdit_adresse->setText(qry.value(3).toString());
-}
-
-     }
-
 }
 
 void MainWindow::on_comboBox_modifiercoma_currentIndexChanged(const QString &arg1)
@@ -434,5 +413,22 @@ void MainWindow::on_comboBox_modifiercoma_currentIndexChanged(const QString &arg
 
 }
 
+     }
+}
+
+void MainWindow::on_comboBox_modifiercli_currentIndexChanged(const QString &arg1)
+{
+    QString name =ui->comboBox_modifiercli->currentText();
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Clients where ID LIKE '"+name+"%' ");
+     if(qry.exec())
+     {
+         while(qry.next())
+         {
+             ui->lineEdit_ID->setText(qry.value(0).toString());
+         ui->lineEdit_nom->setText(qry.value(1).toString());
+         ui->lineEdit_prenom->setText(qry.value(2).toString());
+         ui->lineEdit_adresse->setText(qry.value(3).toString());
+}
      }
 }

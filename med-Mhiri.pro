@@ -12,6 +12,7 @@ SOURCES += \
     client.cpp \
     commande.cpp \
     connection.cpp \
+    dialog.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -19,9 +20,11 @@ HEADERS += \
     client.h \
     commande.h \
     connection.h \
+    dialog.h \
     mainwindow.h
 
 FORMS += \
+    dialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.
