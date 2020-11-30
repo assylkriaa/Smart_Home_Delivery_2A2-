@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/resources">
+    
+        <file>../Resources/back.png</file>
+        <file>../Resources/EFOOD1.png</file>
+  <file>../Resources/mouse.wav</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
