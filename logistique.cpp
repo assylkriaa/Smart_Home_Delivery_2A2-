@@ -20,6 +20,14 @@ logistique::logistique(QWidget *parent) :
     ui->setupUi(this);
     ui->comboBox->setModel(etmp.afficher());
     ui->comboBox_2->setModel(tmp.afficher());
+    ui->tableView->setModel(etmp.afficher());
+    ui->tableView_3->setModel(tmp.afficher());
+    ui->lineEdit->setValidator(new QIntValidator(0000000,9999999,this));
+    ui->lineEdit_7->setValidator(new QIntValidator(0000000,9999999,this));
+    ui->lineEdit_8->setValidator(new QRegExpValidator(QRegExp("[a-z-A-Z]+"),this));
+    ui->lineEdit_2->setValidator(new QRegExpValidator(QRegExp("[a-z-A-Z]+"),this));
+    ui->lineEdit_3->setValidator(new QRegExpValidator(QRegExp("[a-z-A-Z]+"),this));
+    ui->lineEdit_9->setValidator(new QIntValidator(0000000,9999999,this));
 }
 
 logistique::~logistique()
@@ -96,7 +104,7 @@ void logistique::on_tabWidget_currentChanged(int index)
               amande->setAntialiased(false);
               amande->setStackingGap(1);
                //set names and colors:
-              amande->setName("Repartition des types selon leurs matricules ");
+              amande->setName("Repartition des modeles selon leurs types ");
               amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
               amande->setBrush(QColor(0, 168, 140));
               // stack bars on top of each other:
@@ -340,40 +348,87 @@ void logistique::on_pushButton_pdf_clicked()
 void logistique::on_pushButtonREE_clicked()
 {
     int matricule = ui->lineEdit_13->text().toInt();
-            QString type = ui->lineEdit_14->text();
-            QString modele = ui->lineEdit_15->text();
+    QString type = ui->lineEdit_14->text();
+    QString modele = ui->lineEdit_15->text();
+
+        if (modele =='\0' && type == '\0' && matricule !='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher(matricule));
 
 
-                QString txt=ui->lineEdit_13->text();
-                 QString txt1=ui->lineEdit_14->text();
-                  QString txt2=ui->lineEdit_15->text();
-                ui->tableView->setModel(etmp.chercher(txt));
-                 ui->tableView->setModel(etmp.chercher2(txt1));
-                      ui->tableView->setModel(etmp.chercher1(txt2));
+        }
+        if (modele !='\0' && type == '\0' && matricule =='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher1(modele));
 
-                      if(matricule==0&&type==""){
-                           ui->tableView->setModel(etmp.chercher(txt));
-                      }
-               else    if(modele==""&&type==""){
-                    QString txt1=ui->lineEdit_14->text();
-                   ui->tableView->setModel(etmp.chercher2(txt1));}
 
-                else    if(modele==""&&matricule==0){
-                    QString txt2=ui->lineEdit_14->text();
-                  ui->tableView->setModel(etmp.chercher1(txt2));}
+        }
+        if (modele =='\0' && type != '\0' && matricule =='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher2(type));
 
-                      else    if(modele==""){
 
-                           QString txt2=ui->lineEdit_6->text();
-                           QString txt1=ui->lineEdit_15->text();
-                          ui->tableView->setModel(etmp.chercher2(txt1));
-                        ui->tableView->setModel(etmp.chercher1(txt2));}
-                      else    if(matricule==0){
-                          QString txt=ui->lineEdit_13->text();
-                           QString txt1=ui->lineEdit_14->text();
-                          ui->tableView->setModel(etmp.chercher(txt));
-                           ui->tableView->setModel(etmp.chercher1(txt1));
+        }
+        if (modele =='\0' && type != '\0' && matricule !='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher3(type,matricule));
 
-                          }
+
+        }
+        if (modele !='\0' && type != '\0' && matricule =='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher4(type,modele));
+        }
+        if (modele !='\0' && type =='\0' && matricule =='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher5(matricule,modele));
+        }
+        if (modele !='\0' && type !='\0' && matricule !='\0' )
+        {
+            ui->tableView->setModel(etmp.chercher6(matricule,type,modele));
+        }
+
+}
+
+void logistique::on_pushButtonRE_clicked()
+{
+    int reference = ui->lineEdit_16->text().toInt();
+    QString type =  ui->lineEdit_11->text();
+    int code =      ui->lineEdit_12->text().toInt();
+
+        if (code =='\0' && type == '\0' && reference !='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher(reference));
+
+
+        }
+        if (code !='\0' && type == '\0' && reference =='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher1(code));
+
+
+        }
+
+        if (code =='\0' && type != '\0' && reference =='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher2(type));
+
+
+        }
+        if (code =='\0' && type != '\0' && reference !='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher3(type,reference));
+
+
+        }
+        if (code !='\0' && type != '\0' && reference=='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher4(type,code));
+        }
+
+        if (code !='\0' && type !='\0' && reference !='\0' )
+        {
+            ui->tableView_3->setModel(tmp.chercher6(reference,type,code));
+        }
 
 }

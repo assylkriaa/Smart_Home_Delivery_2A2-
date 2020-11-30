@@ -26,9 +26,14 @@ public:
                 void chercher();
                 bool   modifier(QString ref);
 
-                QSqlQueryModel *chercher(QString txt);
-                QSqlQueryModel *chercher1(QString txt);
-                QSqlQueryModel *chercher2(QString txt);
+
+                QSqlQueryModel *chercher(int);
+                QSqlQueryModel *chercher1(int);
+                QSqlQueryModel *chercher2(QString );
+                QSqlQueryModel *chercher3(QString ,int );
+                QSqlQueryModel *chercher4(QString ,int);
+                QSqlQueryModel *chercher5(int ,int );
+                QSqlQueryModel *chercher6(int,QString,int);
 };
 
 #endif // MATERIEL_H

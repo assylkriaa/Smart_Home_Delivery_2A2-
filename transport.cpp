@@ -4,7 +4,7 @@ transport::transport()
 {
 
 }
-transport::transport (QString t,QString mm,int m)
+transport::transport (QString mm,QString t,int m)
 {
 modele=mm;
 type=t;
@@ -33,10 +33,10 @@ return query.exec();
 QSqlQueryModel * transport::afficher()
 {
 QSqlQueryModel * model=new QSqlQueryModel();
-  model->setQuery("select * from transport");
-model->setHeaderData(0,Qt::Horizontal,QObject::tr("modele"));
+  model->setQuery(" select matricule , type , modele  from transport");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
-model->setHeaderData(2,Qt::Horizontal,QObject::tr("matricule"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
 
 return model;
 
@@ -77,11 +77,11 @@ void transport::statistique(QVector<double>* ticks,QVector<QString> *labels)
         *labels <<refer;
 }
 }
-QSqlQueryModel *transport::chercher(QString txt)
+QSqlQueryModel *transport::chercher(int txt)
   {
-
+    QString t= QString::number(txt);
       QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select * from materiel where matricule LIKE '"+txt+"'" );
+      model->setQuery("select * from transport where matricule LIKE '"+t+"'" );
       model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
@@ -93,7 +93,7 @@ QSqlQueryModel *transport::chercher1(QString txt)
   {
 
       QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select * from materiel where type LIKE '"+txt+"'" );
+      model->setQuery("select * from transport where modele LIKE '"+txt+"'" );
       model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
@@ -105,7 +105,7 @@ QSqlQueryModel *transport::chercher2(QString txt)
   {
 
       QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select * from materiel where modele LIKE '"+txt+"'" );
+      model->setQuery("select * from transport where type LIKE '"+txt+"'" );
       model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
@@ -113,4 +113,54 @@ QSqlQueryModel *transport::chercher2(QString txt)
 
       return model;
   }
+QSqlQueryModel *transport::chercher3(QString txt,int m)
+  {
+        QString mat= QString::number(m);
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from transport where type LIKE '"+txt+"' and matricule = '"+mat+"' " );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
+
+
+      return model;
+  }
+QSqlQueryModel *transport::chercher4(QString txt,QString txt1)
+  {
+
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from transport where type LIKE '"+txt+"' and modele = '"+txt1+"' " );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
+
+
+      return model;
+  }
+QSqlQueryModel *transport::chercher5(int m,QString txt1)
+  {
+      QString mat= QString::number(m);
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from transport where matricule LIKE '"+mat+"' and modele = '"+txt1+"' " );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
+
+
+      return model;
+  }
+QSqlQueryModel *transport::chercher6(int m,QString txt1,QString txt)
+  {
+
+    QString mat= QString::number(m);
+    QSqlQueryModel *model=new QSqlQueryModel();
+    model->setQuery("select * from transport where matricule LIKE '"+mat+"'and type= '"+txt1+"'and modele = '"+txt+"' " );
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("matricule"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("modele"));
+
+
+    return model;
+  }
+
 

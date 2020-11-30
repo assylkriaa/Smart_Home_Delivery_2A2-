@@ -74,11 +74,11 @@ bool  materiel:: modifier(QString ref)
     return    query.exec();
 }
 
-/*QSqlQueryModel *materiel::chercher(QString txt)
+QSqlQueryModel *materiel::chercher(int txt)
   {
-
+    QString t= QString::number(txt);
       QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select * from materiel where reference LIKE '"+txt+"'" );
+      model->setQuery("select * from materiel where reference LIKE '"+t+"'" );
       model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
@@ -86,7 +86,20 @@ bool  materiel:: modifier(QString ref)
 
       return model;
   }
-QSqlQueryModel *materiel::chercher1(QString txt)
+QSqlQueryModel *materiel::chercher1(int txt)
+  {
+    QString t= QString::number(txt);
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from materiel where code LIKE '"+t+"'" );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
+
+
+      return model;
+  }
+
+QSqlQueryModel *materiel::chercher2(QString txt)
   {
 
       QSqlQueryModel *model=new QSqlQueryModel();
@@ -95,18 +108,56 @@ QSqlQueryModel *materiel::chercher1(QString txt)
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
 
-
       return model;
   }
-QSqlQueryModel *materiel::chercher2(QString txt)
-  {
 
+QSqlQueryModel *materiel::chercher3(QString txt,int r)
+  {
+        QString ref= QString::number(r);
       QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select * from materiel where code LIKE '"+txt+"'" );
+      model->setQuery("select * from materiel where type LIKE '"+txt+"' and reference = '"+ref+"' " );
       model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
       model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
       model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
 
 
       return model;
-  }*/
+  }
+QSqlQueryModel *materiel::chercher4(QString txt1,int txt)
+  {
+      QString c= QString::number(txt);
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from materiel where type LIKE '"+txt1+"' and code = '"+c+"' " );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
+
+
+      return model;
+  }
+QSqlQueryModel *materiel::chercher5(int r,int txt)
+  {
+      QString ref= QString::number(r);
+      QString c= QString::number(txt);
+      QSqlQueryModel *model=new QSqlQueryModel();
+      model->setQuery("select * from materiel where refrence LIKE '"+ref+"' and code = '"+txt+"' " );
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
+
+
+      return model;
+  }
+QSqlQueryModel *materiel::chercher6(int r,QString txt1,int txt)
+  {
+
+    QString ref= QString::number(r);
+    QSqlQueryModel *model=new QSqlQueryModel();
+    model->setQuery("select * from materiel where reference LIKE '"+ref+"'and type= '"+txt1+"'and co = '"+txt+"' " );
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("code"));
+
+
+    return model;
+  }
