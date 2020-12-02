@@ -6,8 +6,17 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
+
+    animation =new QPropertyAnimation(ui->label,"geometry");
+    animation->setDuration(10000);
+    animation->setStartValue(ui->label->geometry());
+    animation->setEndValue(QRect(300,100,300,100));
+    animation->start();
+
+    son=new QSound("C:/Users/KRIAA/Documents/i-Food/click.wav");
 }
 
 MainWindow::~MainWindow()
@@ -31,7 +40,7 @@ test=true;
 }
 
 void MainWindow::on_pushButton_clicked()
-{
+{   son->play();
     Dialog_principale d;
     d.exec();
 }

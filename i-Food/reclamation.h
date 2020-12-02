@@ -25,6 +25,9 @@ public:
    bool supprimerecl(QString);
    bool modifierecl(QString,QString,QString,QString);
    QSqlQueryModel * trierecl();
+   QSqlQueryModel * trierecl1();
+   QSqlQueryModel * trierecl2();
+
 
 
 

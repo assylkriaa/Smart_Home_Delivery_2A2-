@@ -4,6 +4,8 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include<QPropertyAnimation>
+#include<QSound>
 class Connection
 {
 public:
@@ -29,5 +31,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QPropertyAnimation *animation;
+    QSound *son;
 };
 #endif // MAINWINDOW_H

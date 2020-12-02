@@ -27,6 +27,9 @@ public:
    bool supprimerempl(QString);
 bool modifierempl(QString,QString,QString,QString);
 QSqlQueryModel *trierempl();
+QSqlQueryModel *trierempl1();
+QSqlQueryModel *trierempl2();
+
 
 };
 

@@ -21,7 +21,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Emplacement">
       <attribute name="title">
@@ -32,7 +32,7 @@
         <rect>
          <x>10</x>
          <y>360</y>
-         <width>191</width>
+         <width>141</width>
          <height>28</height>
         </rect>
        </property>
@@ -49,9 +49,9 @@ color:black;
       <widget class="QPushButton" name="pushButton_supp_empl">
        <property name="geometry">
         <rect>
-         <x>220</x>
+         <x>160</x>
          <y>360</y>
-         <width>181</width>
+         <width>151</width>
          <height>28</height>
         </rect>
        </property>
@@ -88,19 +88,6 @@ color:black;
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButton_trier_empl">
-          <property name="styleSheet">
-           <string notr="true">
-background:rgb(cf,cf,cf);
-color:black;
-</string>
-          </property>
-          <property name="text">
-           <string>Trier emplacement </string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QPushButton" name="pushButton_enregistrer_empl">
           <property name="styleSheet">
@@ -203,9 +190,9 @@ color:black;
       <widget class="QPushButton" name="pushButton_modifier_empl">
        <property name="geometry">
         <rect>
-         <x>420</x>
+         <x>320</x>
          <y>360</y>
-         <width>191</width>
+         <width>141</width>
          <height>28</height>
         </rect>
        </property>
@@ -245,6 +232,71 @@ color:black;
         <string/>
        </property>
       </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>310</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tri par:</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>330</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nom de secteur</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_2">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>350</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ville de secteur</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_3">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>370</y>
+         <width>97</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Code postal</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_right_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>290</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>All Right Reserved 20/21 :</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="Reclamation">
       <attribute name="title">
@@ -268,7 +320,7 @@ color:black;
         <rect>
          <x>20</x>
          <y>360</y>
-         <width>161</width>
+         <width>121</width>
          <height>28</height>
         </rect>
        </property>
@@ -285,9 +337,9 @@ color:black;
       <widget class="QPushButton" name="pushButton_supp_reclamation">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>150</x>
          <y>360</y>
-         <width>231</width>
+         <width>141</width>
          <height>28</height>
         </rect>
        </property>
@@ -304,9 +356,9 @@ color:black;
       <widget class="QPushButton" name="pushButton_modifier_reclamation">
        <property name="geometry">
         <rect>
-         <x>430</x>
+         <x>300</x>
          <y>360</y>
-         <width>151</width>
+         <width>131</width>
          <height>28</height>
         </rect>
        </property>
@@ -323,9 +375,9 @@ color:black;
       <widget class="QPushButton" name="pushButton_imprimer_reclamation">
        <property name="geometry">
         <rect>
-         <x>430</x>
+         <x>300</x>
          <y>390</y>
-         <width>151</width>
+         <width>301</width>
          <height>28</height>
         </rect>
        </property>
@@ -339,31 +391,12 @@ color:black;
         <string>Imprimer</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_trier_reclamation">
+      <widget class="QPushButton" name="pushButton_enregistrer_reclamation">
        <property name="geometry">
         <rect>
          <x>20</x>
          <y>390</y>
-         <width>161</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-background:rgb(cf,cf,cf);
-color:black;
-</string>
-       </property>
-       <property name="text">
-        <string>Trier réclamation</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_enregistrer_reclamation">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>390</y>
-         <width>231</width>
+         <width>271</width>
          <height>28</height>
         </rect>
        </property>
@@ -469,6 +502,71 @@ color:black;
        </property>
        <property name="text">
         <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>310</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tri par :</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_4">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>330</y>
+         <width>97</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>code</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_5">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>350</y>
+         <width>97</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sujet</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_6">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>370</y>
+         <width>97</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>commentaire</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_right">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>290</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>All Right Reserved 20/21 :</string>
        </property>
       </widget>
      </widget>

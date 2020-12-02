@@ -60,3 +60,24 @@ QSqlQueryModel * reclamation::trierecl()
     model->setHeaderData(3,Qt::Horizontal, QObject::tr("date reclamation"));
     return model;
 }
+QSqlQueryModel * reclamation::trierecl1()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("select * from reclamation order by sujet");
+    model->setHeaderData(0,Qt::Horizontal, QObject::tr("code"));
+    model->setHeaderData(1,Qt::Horizontal, QObject::tr("sujet"));
+    model->setHeaderData(2,Qt::Horizontal, QObject::tr("commentaire"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("date reclamation"));
+    return model;
+}
+QSqlQueryModel * reclamation::trierecl2()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("select * from reclamation order by commentaire");
+    model->setHeaderData(0,Qt::Horizontal, QObject::tr("code"));
+    model->setHeaderData(1,Qt::Horizontal, QObject::tr("sujet"));
+    model->setHeaderData(2,Qt::Horizontal, QObject::tr("commentaire"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("date reclamation"));
+    return model;
+}
+

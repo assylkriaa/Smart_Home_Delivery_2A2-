@@ -65,3 +65,23 @@ QSqlQueryModel * emplacement::trierempl()
     model->setHeaderData(3,Qt::Horizontal, QObject::tr("date Emplacement"));
     return model;
 }
+QSqlQueryModel * emplacement::trierempl1()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("select * from emplacement order by ville ");
+    model->setHeaderData(0,Qt::Horizontal, QObject::tr("Nom secteur"));
+    model->setHeaderData(1,Qt::Horizontal, QObject::tr("ville"));
+    model->setHeaderData(2,Qt::Horizontal, QObject::tr("code"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("date Emplacement"));
+    return model;
+}
+QSqlQueryModel * emplacement::trierempl2()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("select * from emplacement order by code_postal ");
+    model->setHeaderData(0,Qt::Horizontal, QObject::tr("Nom secteur"));
+    model->setHeaderData(1,Qt::Horizontal, QObject::tr("ville"));
+    model->setHeaderData(2,Qt::Horizontal, QObject::tr("code"));
+    model->setHeaderData(3,Qt::Horizontal, QObject::tr("date Emplacement"));
+    return model;
+}
