@@ -1,25 +1,423 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "commande.h"
+#include <QMessageBox>
+#include "client.h"
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QPainter>
+#include <QTextStream>
+#include <QTextDocument>
+#include <QDateTime>
+Dialog::Dialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::Dialog)
 
-Dialog::Dialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    animation= new QPropertyAnimation(ui->pushButton,"geometry");
-    animation->setDuration(10000);
-    animation->setStartValue(ui->pushButton->geometry());
-     animation->setEndValue(QRect(200,200,200,100));
-     animation->start();
+    ui->comboBox_client_2->addItem("ID et nom");
+            ui->comboBox_client_2->addItem("ID et prenom");
+            ui->comboBox_client_2->addItem("ID et adresse");
+            ui->comboBox_client_2->addItem("nom et prenom");
+            ui->comboBox_client_2->addItem("nom et adresse");
+            ui->comboBox_client_2->addItem("prenom et adresse");
+            ui->comboBox_commande_2->addItem("ID");
+            ui->comboBox_commande_2->addItem("nom_commande");
+            ui->comboBox_commande_2->addItem("nbc");
+            ui->comboBox_choix_2->addItem("croissant");
+            ui->comboBox_choix_2->addItem("decroissant");
+   /* ui->tableView->setModel(tempCommande.afficher());*/
 }
-
 Dialog::~Dialog()
 {
     delete ui;
 }
 
-void Dialog::on_pushButton_clicked()
+
+
+void Dialog::on_pushButton_ajouterco_2_clicked()
 {
-   w= new MainWindow(this);
-   w->show();
+    int nb=ui->spinBox_2->text().toInt();
+    int id=ui->lineEdit_IDCOMMANDES_2->text().toInt();
+    QString nom_commande=ui->lineEdit_commande_2->text();
+
+    Commande c(nom_commande,nb,id);
+    bool test=c.ajouter();
+
+    if(test)
+    {
+        /*ui->tableView->setModel(tempCommande.afficher());*/
+        QMessageBox::information(nullptr, QObject::tr("Ajout"),
+                    QObject::tr("ajout avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("ajout "),
+                    QObject::tr("ajout echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_afficherco_2_clicked()
+{
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT ID FROM Commandes ");
+     qry.exec();
+     Modal->setQuery(qry);
+     ui->comboBox_modifiercoma_2->setModel(Modal);
+    ui->tableView_2->setModel(tempCommande.afficher());
+}
+
+void Dialog::on_pushButton_suprimerco_2_clicked()
+{
+    int id=ui->lineEdit_IDCOMMANDES_2->text().toInt();
+    bool test=tempCommande.supprimer(id);
+    if(test)
+    {
+
+        QMessageBox::information(nullptr, QObject::tr("supprimer"),
+                    QObject::tr("supression avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+ }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("supprimer"),
+                    QObject::tr("surppresion echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_ajouterct_2_clicked()
+{
+    int ID=ui->lineEdit_ID_2->text().toInt();
+    QString nom=ui->lineEdit_nom_2->text();
+    QString prenom=ui->lineEdit_prenom_2->text();
+    QString adresse=ui->lineEdit_adresse_2->text();
+
+    Client c(ID,nom,prenom,adresse);
+    bool test=c.ajouter();
+    if(test)
+    {
+
+        QMessageBox::information(nullptr, QObject::tr("Ajout"),
+                    QObject::tr("ajout avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("ajout "),
+                    QObject::tr("ajout echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_afficherct_2_clicked()
+{
+    QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+    QSqlQuery qry;
+     qry.prepare("SELECT ID FROM Clients ");
+     qry.exec();
+     Modal->setQuery(qry);
+     ui->comboBox_modifiercli_2->setModel(Modal);
+    ui->tableView_client_2->setModel(tempClient.afficher());
+}
+
+void Dialog::on_pushButton_suprimerct_2_clicked()
+{
+    int id=ui->lineEdit_ID_2->text().toInt();
+    bool test=tempClient.supprimer(id);
+    if(test)
+    {
+
+        QMessageBox::information(nullptr, QObject::tr("supprimer"),
+                    QObject::tr("supression avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+ }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("supprimer "),
+                    QObject::tr("surppresion echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_modifierco_2_clicked()
+{
+    int nb=ui->spinBox_2->text().toInt();
+    int id=ui->lineEdit_IDCOMMANDES_2->text().toInt();
+    QString nom_commande=ui->lineEdit_commande_2->text();
+
+    Commande c(nom_commande,nb,id);
+    bool test=c.modifier();
+    if(test)
+    {
+
+        QMessageBox::information(nullptr, QObject::tr("Modifier"),
+                    QObject::tr("Modification avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Modifier "),
+                    QObject::tr("Modification echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_modifierct_2_clicked()
+{
+    int ID=ui->lineEdit_ID_2->text().toInt();
+    QString nom=ui->lineEdit_nom_2->text();
+    QString prenom=ui->lineEdit_prenom_2->text();
+    QString adresse=ui->lineEdit_adresse_2->text();
+
+    Client c(ID,nom,prenom,adresse);
+    bool test=c.modifier();
+    if(test)
+    {
+
+        QMessageBox::information(nullptr, QObject::tr("Modifier"),
+                    QObject::tr("Modification avec succes.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Modifier "),
+                    QObject::tr("Modification echoue.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void Dialog::on_pushButton_enregistrerco_2_clicked()
+{
+    QSqlDatabase db;
+                  QTableView tableView;
+
+                   tableView.setModel(tempCommande.enregistrer());
+                   db.close();
+
+
+                   QString strStream;
+                   QTextStream out(&strStream);
+
+                   const int rowCount = tableView.model()->rowCount();
+                   const int columnCount =  tableView.model()->columnCount();
+
+                   QString date = QDateTime::currentDateTime().toString();
+out<<date;
+
+                   const QString strTitle ="Document";
+
+
+                   out <<  "<html>\n"
+                       "<head>\n"
+                           "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+
+                       <<  QString("<title>%1</title>\n").arg(strTitle)
+                       <<  "</head>\n"
+                       "<body bgcolor=#ffffff link=#5000A0>\n"
+                      << QString("<h3 style=\" font-size: 40px; font-family: Arial, Helvetica, sans-serif; color: #0894FD; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des Commandes")
+                      <<"<br>"
+                       <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+
+                   out << "<thead><tr bgcolor=#f0f0f0>";
+                   for (int column = 0; column < columnCount; column++)
+                       if (!tableView.isColumnHidden(column))
+                           out << QString("<th>%1</th>").arg(tableView.model()->headerData(column, Qt::Horizontal).toString());
+                   out << "</tr></thead>\n";
+
+                   for (int row = 0; row < rowCount; row++) {
+                       out << "<tr>";
+                       for (int column = 0; column < columnCount; column++) {
+                           if (!tableView.isColumnHidden(column)) {
+                               QString data = tableView.model()->data(tableView.model()->index(row, column)).toString().simplified();
+                               out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                           }
+                       }
+                       out << "</tr>\n";
+                   }
+                   out <<  "</table>\n"
+                           "<br><br>"
+
+                           "<p align='center'> <img src='/C:/Users/pc/Desktop/Nouveau dossier/naoto.png' alt='naoto.png'></p>"
+
+                        <<"<br>"
+                           <<"<table border=1 cellspacing=0 cellpadding=2 >\n";
+
+
+                       out << "<thead><tr bgcolor=#f0f0f0>";
+
+                           out <<  "</table >\n"
+
+                       "</body>\n"
+
+                       "</html>\n";
+
+                   QTextDocument *document = new QTextDocument();
+                   document->setHtml(strStream);
+
+                   QPrinter printer;
+                   QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                   if (dialog->exec() == QDialog::Accepted) {
+
+                      /* QLabel lab;
+                        QPixmap pixmap("D:/care++.png");
+                       lab.setPixmap(pixmap);
+                       QPainter painter(&lab);
+                       QPrinter printer(QPrinter::PrinterResolution);
+  */
+                       document->print(&printer);
+
+                   }
+
+                   printer.setOutputFormat(QPrinter::PdfFormat);
+                   printer.setPaperSize(QPrinter::A4);
+                   printer.setOutputFileName("C:/Users/pc/Desktop/projet c++/PDF/commande.pdf");
+                   printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                   delete document;
+}
+
+void Dialog::on_pushButton_rechercherco_2_clicked()
+{
+    QString a=ui->lineEdit_recherche_2->text();
+    QString b=ui->lineEdit_reee_2->text();
+    QString choice=ui->comboBox_client_2->currentText();
+     ui->tableView_client_2->setModel(tempClient.rechercher(choice,a,b));
+}
+
+void Dialog::on_pushButton_trierco_2_clicked()
+{
+    QString a=ui->comboBox_choix_2->currentText();
+        QString choice=ui->comboBox_commande_2->currentText();
+         ui->tableView_2->setModel(tempCommande.trier(choice,a));
+}
+
+void Dialog::on_pushButton_enregistrerct_2_clicked()
+{
+    QSqlDatabase db;
+                  QTableView tableView;
+
+                   tableView.setModel(tempClient.enregistrer());
+
+
+
+                   db.close();
+
+
+                   QString strStream;
+                   QTextStream out(&strStream);
+
+                   const int rowCount = tableView.model()->rowCount();
+                   const int columnCount =  tableView.model()->columnCount();
+
+
+                   QString date = QDateTime::currentDateTime().toString();
+out<<date;
+                   const QString strTitle ="Document";
+
+
+                   out <<  "<html>\n"
+                       "<head>\n"
+                           "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                       <<  QString("<title>%1</title>\n").arg(strTitle)
+                       <<  "</head>\n"
+                       "<body bgcolor=#ffffff link=#5000A0>\n"
+                      << QString("<h3 style=\" font-size: 40px; font-family: Arial, Helvetica, sans-serif; color: #0894FD; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des Comptes Clients")
+                      <<"<br>"
+                       <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+
+                   out << "<thead><tr bgcolor=#f0f0f0>";
+                   for (int column = 0; column < columnCount; column++)
+                       if (!tableView.isColumnHidden(column))
+                           out << QString("<th>%1</th>").arg(tableView.model()->headerData(column, Qt::Horizontal).toString());
+                   out << "</tr></thead>\n";
+
+                   for (int row = 0; row < rowCount; row++) {
+                       out << "<tr>";
+                       for (int column = 0; column < columnCount; column++) {
+                           if (!tableView.isColumnHidden(column)) {
+                               QString data = tableView.model()->data(tableView.model()->index(row, column)).toString().simplified();
+                               out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                           }
+                       }
+                       out << "</tr>\n";
+                   }
+                   out <<  "</table>\n"
+                           "<br><br>"
+
+                           "<p align='center'> <img src='/C:/Users/pc/Desktop/Nouveau dossier/naoto.png' alt='naoto.png'></p>"
+
+                        <<"<br>"
+                           <<"<table border=1 cellspacing=0 cellpadding=2 >\n";
+
+
+                       out << "<thead><tr bgcolor=#f0f0f0>";
+
+                           out <<  "</table >\n"
+
+                       "</body>\n"
+
+                       "</html>\n";
+
+                   QTextDocument *document = new QTextDocument();
+                   document->setHtml(strStream);
+
+                   QPrinter printer;
+                   QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                   if (dialog->exec() == QDialog::Accepted) {
+
+                      /* QLabel lab;
+                        QPixmap pixmap("D:/care++.png");
+                       lab.setPixmap(pixmap);
+                       QPainter painter(&lab);
+                       QPrinter printer(QPrinter::PrinterResolution);
+  */
+                       document->print(&printer);
+
+                   }
+
+                   printer.setOutputFormat(QPrinter::PdfFormat);
+                   printer.setPaperSize(QPrinter::A4);
+                   printer.setOutputFileName("C:/Users/pc/Desktop/projet c++/PDF/compte_client.pdf");
+                   printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                   delete document;
+}
+
+void Dialog::on_comboBox_modifiercoma_2_currentIndexChanged(const QString &arg1)
+{
+    QString name =ui->comboBox_modifiercoma_2->currentText();
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Commandes where ID LIKE '"+name+"%' ");
+     if(qry.exec())
+     {
+         while(qry.next())
+         {
+             ui->lineEdit_IDCOMMANDES_2->setText(qry.value(0).toString());
+         ui->lineEdit_commande_2->setText(qry.value(1).toString());
+         ui->spinBox_2->setValue(qry.value(2).toInt());
+
+}
+
+     }
+}
+
+void Dialog::on_comboBox_modifiercli_2_currentIndexChanged(const QString &arg1)
+{
+    QString name =ui->comboBox_modifiercli_2->currentText();
+    QSqlQuery qry;
+     qry.prepare("SELECT * FROM Clients where ID LIKE '"+name+"%' ");
+     if(qry.exec())
+     {
+         while(qry.next())
+         {
+             ui->lineEdit_ID_2->setText(qry.value(0).toString());
+         ui->lineEdit_nom_2->setText(qry.value(1).toString());
+         ui->lineEdit_prenom_2->setText(qry.value(2).toString());
+         ui->lineEdit_adresse_2->setText(qry.value(3).toString());
+}
+     }
 }

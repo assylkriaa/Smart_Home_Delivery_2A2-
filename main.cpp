@@ -7,11 +7,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    Dialog d;
+
     Connection c;
     bool test=c.createconnect();
     if(test)
-    {d.show();
+    {w.show();
         QMessageBox::information(nullptr, QObject::tr("database is open"),
                     QObject::tr("connection successful.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);

@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "client.h"
 #include <QMainWindow>
-#include "commande.h"
+#include <qpropertyanimation.h>
+#include <dialog.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -16,40 +16,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_ajouterco_clicked();
-
-    void on_pushButton_afficherco_clicked();
-
-    void on_pushButton_suprimerco_clicked();
-
-    void on_pushButton_ajouterct_clicked();
-
-    void on_pushButton_afficherct_clicked();
-
-    void on_pushButton_suprimerct_clicked();
-
-    void on_pushButton_modifierco_clicked();
-
-    void on_pushButton_modifierct_clicked();
-
-    void on_pushButton_rechercherco_clicked();
-
-    void on_pushButton_trierco_clicked();
-
-    void on_pushButton_enregistrerco_clicked();
-
-    void on_pushButton_enregistrerct_clicked();
-
-
-    void on_comboBox_modifiercoma_currentIndexChanged(const QString &arg1);
-
-    void on_comboBox_modifiercli_currentIndexChanged(const QString &arg1);
+    void on_pushButton_clicked();
 
 
 
 private:
     Ui::MainWindow *ui;
-    Commande tempCommande;
-    Client tempClient;
+
+    QPropertyAnimation *animation;
 };
 #endif // MAINWINDOW_H
