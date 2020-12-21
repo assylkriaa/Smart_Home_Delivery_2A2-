@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "logistique.h"
-#include <QFileDialog>
-#include  <QString>
+#include "facrec.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -16,7 +15,8 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_clicked()
-{ logistique d;
-d.exec();
+void MainWindow::on_pushButton_FACREC_clicked()
+{
+   FACREC d;
+   d.exec();
 }
