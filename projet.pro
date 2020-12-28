@@ -36,11 +36,14 @@ SOURCES += \
     ../i-Food/logistique.cpp \
     ../i-Food/materiel.cpp \
     ../i-Food/modifier.cpp \
+    ../i-Food/notification.cpp \
+    ../i-Food/pluie.cpp \
     ../i-Food/qcustomplot.cpp \
     ../i-Food/recette.cpp \
     ../i-Food/reclamation.cpp \
     ../i-Food/smtp.cpp \
     ../i-Food/stat_combo.cpp \
+    ../i-Food/temp.cpp \
     ../i-Food/transport.cpp \
     classe_conge.cpp \
     classe_personnel.cpp \
@@ -65,11 +68,14 @@ HEADERS += \
     ../i-Food/logistique.h \
     ../i-Food/materiel.h \
     ../i-Food/modifier.h \
+    ../i-Food/notification.h \
+    ../i-Food/pluie.h \
     ../i-Food/qcustomplot.h \
     ../i-Food/recette.h \
     ../i-Food/reclamation.h \
     ../i-Food/smtp.h \
     ../i-Food/stat_combo.h \
+    ../i-Food/temp.h \
     ../i-Food/transport.h \
     classe_conge.h \
     classe_personnel.h \
@@ -86,7 +92,9 @@ FORMS += \
     ../i-Food/login.ui \
     ../i-Food/logistique.ui \
     ../i-Food/modifier.ui \
+    ../i-Food/pluie.ui \
     ../i-Food/stat_combo.ui \
+    ../i-Food/temp.ui \
     gestion_perso_conge.ui \
     mainwindow.ui
 

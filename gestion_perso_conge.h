@@ -64,6 +64,8 @@ private slots:
 
 
 
+    void on_pushButton_tri_2_clicked();
+
 private:
     Ui::gestion_perso_conge *ui;
     classe_personnel tmpemployee;

@@ -394,3 +394,9 @@ void gestion_perso_conge::on_comboBox_id_currentTextChanged(const QString &arg1)
 }
 
 
+
+void gestion_perso_conge::on_pushButton_tri_2_clicked()
+{
+    TEMP t;
+    t.exec();
+}

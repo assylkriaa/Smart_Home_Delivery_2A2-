@@ -7,9 +7,9 @@
 #include <QMessageBox>
 #include"notification.h"
 
-Dialog::Dialog(QWidget *parent) :
+TEMP::TEMP(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Dialog)
+    ui(new Ui::TEMP)
 {
     ui->setupUi(this);
     ui->temp_lcdNumber->display("-------");
@@ -75,7 +75,7 @@ Dialog::Dialog(QWidget *parent) :
     }
 }
 
-Dialog::~Dialog()
+TEMP::~TEMP()
 {
     if(arduino->isOpen()){
         arduino->close(); //    Close the serial port if it's open.
@@ -83,7 +83,7 @@ Dialog::~Dialog()
     delete ui;
 }
 
-void Dialog::readSerial()
+void TEMP::readSerial()
 {
 notification n;
         serialData = arduino->readAll();
@@ -93,7 +93,7 @@ notification n;
  // temperature_value = parsed_data.toFloat() * (5.0 / 1023.0 * 100.0);
          // qDebug() << "Temperature: " << temperature_value ;
 
-        Dialog::updateTemperature(parsed_data);
+        TEMP::updateTemperature(parsed_data);
         qDebug() << "Temperature: " <<parsed_data<< "\n";
         if(parsed_data>="30.00")
             n.notificationC();
@@ -101,7 +101,7 @@ notification n;
 
 }
 
-void Dialog::updateTemperature(QString sensor_reading)
+void TEMP::updateTemperature(QString sensor_reading)
 {
 
     ui->temp_lcdNumber->display(sensor_reading);
