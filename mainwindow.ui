@@ -14,7 +14,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string/>
+   <string>Menu</string>
   </property>
   <property name="windowIcon">
    <iconset>

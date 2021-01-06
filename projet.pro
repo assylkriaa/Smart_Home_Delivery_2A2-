@@ -36,6 +36,7 @@ SOURCES += \
     ../i-Food/logistique.cpp \
     ../i-Food/materiel.cpp \
     ../i-Food/modifier.cpp \
+    ../i-Food/mvt.cpp \
     ../i-Food/notification.cpp \
     ../i-Food/pluie.cpp \
     ../i-Food/qcustomplot.cpp \
@@ -68,6 +69,7 @@ HEADERS += \
     ../i-Food/logistique.h \
     ../i-Food/materiel.h \
     ../i-Food/modifier.h \
+    ../i-Food/mvt.h \
     ../i-Food/notification.h \
     ../i-Food/pluie.h \
     ../i-Food/qcustomplot.h \
@@ -92,6 +94,7 @@ FORMS += \
     ../i-Food/login.ui \
     ../i-Food/logistique.ui \
     ../i-Food/modifier.ui \
+    ../i-Food/mvt.ui \
     ../i-Food/pluie.ui \
     ../i-Food/stat_combo.ui \
     ../i-Food/temp.ui \

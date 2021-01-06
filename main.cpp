@@ -3,9 +3,6 @@
 #include <QApplication>
 #include <QMessageBox>
 #include "connexion.h"
-#include "gestion_perso_conge.h"
-#include "dialog_principale.h"
-#include"logistique.h"
 #include<QTextCodec>
 #include<QTranslator>
 #include<QInputDialog>
@@ -15,14 +12,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     connexion c;
-   // gestion_perso_conge p;
-   // logistique l;
-   // Dialog_principale e;
 
-
-   // l.setWindowTitle(" Transport ");
-   // e.setWindowTitle(" Emplacement et Reclamation ");
-   // p.setWindowTitle(" Personnels ");
 
     QTranslator t;
     QStringList language;
@@ -38,7 +28,8 @@ int main(int argc, char *argv[])
        a.installTranslator(&t);
      }
      login w;
-      //w.setWindowTitle(QObject::tr(" login "));
+      w.setWindowTitle(QObject::tr(" login "));
+
     bool test=c.createconnect();
     if(test)
     {
